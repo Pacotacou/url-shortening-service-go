@@ -42,12 +42,12 @@ func connectToDB() (*interfaces.PostgresConnector, error) {
 	}
 
 	config := interfaces.DBConfig{
-		Host:     os.Getenv("HOST"),
+		Host:     os.Getenv("DB_HOST"),
 		Port:     port,
 		User:     os.Getenv("DB_USER"),
-		Password: os.Getenv("DB_PW"),
+		Password: os.Getenv("DB_PASSWORD"),
 		DBName:   os.Getenv("DB_NAME"),
-		SSLMode:  os.Getenv("SSL"),
+		SSLMode:  "disable",
 	}
 
 	connector := interfaces.NewPostgresConnector(config)

@@ -1,0 +1,13 @@
+FROM postgres:17.2
+
+# Set environment variables
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=urlshortener
+
+# Copy initialization script to docker-entrypoint-initdb.d
+# Any script in this directory will be executed when the container is first started
+COPY ./schema.sql /docker-entrypoint-initdb.d/
+
+# Expose PostgreSQL port
+EXPOSE 5432
